@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <CodeAnalysisRuleSet>..\..\..\..\stylecop.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Mapster" Version="7.2.0" />
+        <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Application\DesktopClearArchitecture.Application\DesktopClearArchitecture.Application.csproj" />
+      <ProjectReference Include="..\..\..\Domain\DesktopClearArchitecture.Domain\DesktopClearArchitecture.Domain.csproj" />
+      <ProjectReference Include="..\..\DesktopClearArchitecture.Shared\DesktopClearArchitecture.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
