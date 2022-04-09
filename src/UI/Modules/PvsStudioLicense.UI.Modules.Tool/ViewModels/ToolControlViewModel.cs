@@ -18,7 +18,7 @@
         private readonly IProjectManager _projectManager;
 
         /// <inheritdoc />
-        private ToolControlViewModel(
+        public ToolControlViewModel(
             IRegionManager regionManager,
             IProjectManager projectManager)
         {
@@ -29,10 +29,17 @@
                 .SelectMany(x => x)
                 .ToReactiveCollection();
 
-            RemoveProject.WithSubscribe(x =>
+            AddProject.WithSubscribe(async _ =>
             {
-                _projectManager.Delete(x);
-                Projects.RemoveOnScheduler(x);
+                var project = await ShowFolderBrowserDialog();
+                if (project != null)
+                    Projects.AddOnScheduler(project);
+            });
+
+            RemoveProject.WithSubscribe(async project =>
+            {
+                await _projectManager.Delete(project);
+                Projects.RemoveOnScheduler(project);
             });
 
             OpenSettings.Subscribe(() =>
@@ -52,12 +59,12 @@
         /// <summary>
         /// Add project.
         /// </summary>
-        public ReactiveCommand AddProject { get; } = new();
+        public AsyncReactiveCommand AddProject { get; } = new();
 
         /// <summary>
         /// Remove project.
         /// </summary>
-        public ReactiveCommand<Project> RemoveProject { get; } = new();
+        public AsyncReactiveCommand<Project> RemoveProject { get; } = new();
 
         private async Task<Project> ShowFolderBrowserDialog()
         {
@@ -72,11 +79,7 @@
             if (projectCache is not null)
                 return null;
 
-            var project = new Project
-            {
-                Name = dialog.SelectedPath,
-                Path = dialog.SelectedPath
-            };
+            var project = new Project(dialog.SelectedPath);
             await _projectManager.Add(project);
             return project;
         }

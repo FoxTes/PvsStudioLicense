@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <CodeAnalysisRuleSet>..\..\..\..\stylecop.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HandyControls" Version="3.3.11" />
+        <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+        <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
+        <PackageReference Include="XamlFlair.WPF" Version="1.2.13" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Infrastructure\PvsStudioLicense.Infrastructure\PvsStudioLicense.Infrastructure.csproj" />
+        <ProjectReference Include="..\..\PvsStudioLicense.Shared\PvsStudioLicense.Shared.csproj" />
+    </ItemGroup>
+    
+</Project>

@@ -6,10 +6,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Extensions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="HandyControls" Version="3.3.11" />
     </ItemGroup>
 

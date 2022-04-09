@@ -42,7 +42,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="100" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Path}" />
+                        <TextBlock IsEnabled="{Binding IsValid}" Text="{Binding Path}" />
                         <Button
                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.RemoveProject}"
                             CommandParameter="{Binding}"

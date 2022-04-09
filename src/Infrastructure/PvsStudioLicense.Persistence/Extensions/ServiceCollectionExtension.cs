@@ -13,7 +13,7 @@ public static class ServiceCollectionExtension
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
-        Akavache.Registrations.Start("AkavacheExperiment");
+        Akavache.Registrations.Start("PvsStudioLicense");
 
         return services;
     }

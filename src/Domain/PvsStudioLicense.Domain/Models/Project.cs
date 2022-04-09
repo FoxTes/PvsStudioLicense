@@ -3,25 +3,43 @@
 /// <summary>
 /// TODO.
 /// </summary>
-public class Project
+public record Project
 {
     /// <summary>
-    /// TODO.
+    /// Initializes a new instance of the <see cref="Project"/> class.
     /// </summary>
-    public string Name { get; set; }
+    /// <param name="path">Path.</param>
+    public Project(string path)
+    {
+        Path = path;
+        Name = path;
+    }
 
     /// <summary>
     /// TODO.
     /// </summary>
-    public string Path { get; set; }
+    public string Path { get; }
 
     /// <summary>
     /// TODO.
     /// </summary>
-    public bool IsValid { get; set; }
+    public string Name { get; }
 
     /// <summary>
     /// TODO.
     /// </summary>
-    public bool IsPined { get; set; }
+    public bool IsValid => GetStatusValid();
+
+    /// <summary>
+    /// TODO.
+    /// </summary>
+    public bool IsPined { get; private set; }
+
+    /// <summary>
+    /// Changed status pined.
+    /// </summary>
+    /// <param name="status">Status.</param>
+    public void ChangedStatusPined(bool status) => IsPined = status;
+
+    private bool GetStatusValid() => Directory.Exists(Path);
 }

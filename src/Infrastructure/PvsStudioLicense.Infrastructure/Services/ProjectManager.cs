@@ -14,8 +14,17 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
         BlobCache.LocalMachine.GetAllObjects<Project>();
 
     /// <inheritdoc />
-    public async Task<Project> Get(string key) =>
-        await BlobCache.LocalMachine.GetObject<Project>(key);
+    public async Task<Project> Get(string key)
+    {
+        try
+        {
+            return await BlobCache.LocalMachine.GetObject<Project>(key);
+        }
+        catch (KeyNotFoundException)
+        {
+            return null;
+        }
+    }
 
     /// <inheritdoc />
     public async Task Add(Project project) =>
