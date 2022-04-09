@@ -1,0 +1,18 @@
+﻿<Window
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+    hc:LocalizationManager.Provider="PvsStudioLicense.Client;Assets.Strings"
+    mc:Ignorable="d"
+    regions:RegionManager.RegionName="{x:Static core:RegionNames.MainContent}"
+    x:Class="PvsStudioLicense.Client.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:core="clr-namespace:PvsStudioLicense.Shared.Constants;assembly=PvsStudioLicense.Shared"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:regions="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:PvsStudioLicense.Client.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />

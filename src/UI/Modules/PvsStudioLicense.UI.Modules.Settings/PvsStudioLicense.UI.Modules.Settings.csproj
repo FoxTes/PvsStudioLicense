@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <CodeAnalysisRuleSet>..\..\..\..\stylecop.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FastEnum" Version="1.7.0" />
+        <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
+        <PackageReference Include="XamlFlair.WPF" Version="1.2.13" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Application\PvsStudioLicense.Application\PvsStudioLicense.Application.csproj" />
+        <ProjectReference Include="..\..\PvsStudioLicense.Shared\PvsStudioLicense.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="HandyControl, Version=3.3.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b">
+        <HintPath>..\..\..\..\..\..\.nuget\packages\handycontrols\3.3.11\lib\net6.0\HandyControl.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

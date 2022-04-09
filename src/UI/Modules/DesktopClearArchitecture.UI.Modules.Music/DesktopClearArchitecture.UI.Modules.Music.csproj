@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Application\DesktopClearArchitecture.Application\DesktopClearArchitecture.Application.csproj" />
-      <ProjectReference Include="..\..\..\Domain\DesktopClearArchitecture.Domain\DesktopClearArchitecture.Domain.csproj" />
+      <ProjectReference Include="..\..\..\Application\PVS-StudioLicense.Application\PVS-StudioLicense.Application.csproj" />
+      <ProjectReference Include="..\..\..\Domain\PVS-StudioLicense.Domain\PVS-StudioLicense.Domain.csproj" />
       <ProjectReference Include="..\..\DesktopClearArchitecture.Shared\DesktopClearArchitecture.Shared.csproj" />
     </ItemGroup>
 

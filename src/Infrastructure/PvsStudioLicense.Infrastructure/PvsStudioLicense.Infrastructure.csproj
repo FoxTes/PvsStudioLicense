@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
+      <ProjectReference Include="..\PvsStudioLicense.Persistence\PvsStudioLicense.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+      <PackageReference Include="Scrutor.AspNetCore" Version="3.3.0" />
+    </ItemGroup>
+
+</Project>

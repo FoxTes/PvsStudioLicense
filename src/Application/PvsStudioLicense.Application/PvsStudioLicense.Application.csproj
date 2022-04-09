@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\PvsStudioLicense.Infrastructure\PvsStudioLicense.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Extensions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HandyControls" Version="3.3.11" />
+    </ItemGroup>
+
+</Project>

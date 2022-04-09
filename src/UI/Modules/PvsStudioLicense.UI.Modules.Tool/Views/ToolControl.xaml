@@ -1,0 +1,61 @@
+﻿<UserControl
+    Height="600"
+    Width="440"
+    d:DataContext="{d:DesignInstance viewModels:ToolControlViewModel}"
+    d:DesignHeight="600"
+    d:DesignWidth="440"
+    mc:Ignorable="d"
+    x:Class="PvsStudioLicense.UI.Modules.Tool.Views.ToolControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:PvsStudioLicense.UI.Modules.Tool.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border Background="Beige" Margin="0" />
+
+                <Button
+                    Command="{Binding OpenSettings}"
+                    Content="{hc:Localization Key=SettingsName}"
+                    Grid.Column="1" />
+            </Grid>
+        </Border>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Projects}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Path}" />
+                        <Button
+                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.RemoveProject}"
+                            CommandParameter="{Binding}"
+                            Content="Удалить"
+                            Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button
+            Command="{Binding AddProject}"
+            Content="Добавить проект"
+            Grid.Row="2" />
+    </Grid>
+</UserControl>

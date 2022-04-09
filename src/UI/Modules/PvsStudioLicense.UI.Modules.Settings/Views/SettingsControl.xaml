@@ -1,0 +1,93 @@
+﻿<UserControl
+    Height="600"
+    Width="440"
+    d:DataContext="{d:DesignInstance viewModels:SettingsControlViewModel}"
+    d:DesignHeight="600"
+    d:DesignWidth="440"
+    mc:Ignorable="d"
+    x:Class="PvsStudioLicense.UI.Modules.Settings.Views.SettingsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:PvsStudioLicense.UI.Modules.Settings.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xamlFlair="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
+    xmlns:enums="clr-namespace:PvsStudioLicense.Application.Enums;assembly=PvsStudioLicense.Application">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding Back}" Content="Back" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <TabControl
+            Grid.Row="1"
+            IsSelected="True"
+            Margin="16">
+            <TabItem Header="{hc:Localization Key=SettingsName}">
+                <hc:TransitioningContentControl>
+                    <StackPanel Margin="8,16,0,16">
+                        <hc:ComboBox
+                            ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enums:Language}}}"
+                            SelectedItem="{Binding LanguageSelected.Value}"
+                            Style="{StaticResource ComboBoxExtend}"
+                            Width="200"
+                            hc:InfoElement.Title="Language"
+                            hc:InfoElement.TitlePlacement="Left"
+                            hc:InfoElement.TitleWidth="100" />
+
+                        <GroupBox
+                            Header="Theme"
+                            HorizontalContentAlignment="Left"
+                            Margin="0,16,0,16"
+                            Style="{StaticResource GroupBoxOriginal}"
+                            VerticalAlignment="Bottom"
+                            hc:TitleElement.TitlePlacement="Left"
+                            hc:TitleElement.TitleWidth="100">
+                            <hc:ButtonGroup Width="300">
+                                <RadioButton Content="Light" />
+                                <RadioButton Content="Dark" />
+                            </hc:ButtonGroup>
+                        </GroupBox>
+                    </StackPanel>
+                </hc:TransitioningContentControl>
+            </TabItem>
+            <TabItem Header="{hc:Localization Key=AboutName}" x:Name="TabItemAbout" />
+        </TabControl>
+
+        <Border
+            BorderBrush="DarkGray"
+            BorderThickness="0,1,0,0"
+            Grid.Row="2"
+            Padding="24,12,12,12"
+            xamlFlair:Animations.AllowOpacityReset="False"
+            xamlFlair:Animations.CombinedBinding="{Binding IsSelected, ElementName=TabItemAbout}"
+            xamlFlair:Animations.Primary="{xamlFlair:Animate BasedOn={StaticResource ScaleFromBottom},
+                                                             Duration=300,
+                                                             Event=None}"
+            xamlFlair:Animations.Secondary="{xamlFlair:Animate BasedOn={StaticResource ScaleToBottom},
+                                                               Duration=300,
+                                                               Event=None}"
+            xamlFlair:Animations.StartWith="{StaticResource ScaleToBottom}">
+
+            <StackPanel>
+                <TextBlock>Power by open-source software</TextBlock>
+                <TextBlock Margin="0,4,0,0" Text="Create by Georgy Levchenko" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
