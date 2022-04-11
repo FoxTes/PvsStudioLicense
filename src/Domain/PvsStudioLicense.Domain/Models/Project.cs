@@ -1,7 +1,7 @@
 ﻿namespace PvsStudioLicense.Domain.Models;
 
 /// <summary>
-/// TODO.
+/// Project.
 /// </summary>
 public record Project
 {
@@ -16,22 +16,22 @@ public record Project
     }
 
     /// <summary>
-    /// TODO.
+    /// Path.
     /// </summary>
     public string Path { get; }
 
     /// <summary>
-    /// TODO.
+    /// Name.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// TODO.
+    /// IsValid.
     /// </summary>
     public bool IsValid => GetStatusValid();
 
     /// <summary>
-    /// TODO.
+    /// IsPined.
     /// </summary>
     public bool IsPined { get; private set; }
 

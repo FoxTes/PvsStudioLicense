@@ -20,5 +20,9 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Extensions" />
+    </ItemGroup>
 
 </Project>

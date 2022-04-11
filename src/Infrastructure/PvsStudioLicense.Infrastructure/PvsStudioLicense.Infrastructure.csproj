@@ -8,6 +8,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
       <PackageReference Include="Scrutor.AspNetCore" Version="3.3.0" />
+      <PackageReference Include="System.IO.Abstractions" Version="16.1.25" />
     </ItemGroup>
 
 </Project>

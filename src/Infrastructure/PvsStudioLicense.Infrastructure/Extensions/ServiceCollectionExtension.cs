@@ -1,4 +1,4 @@
-﻿namespace PvsStudioLicense.Persistence.Extensions;
+﻿namespace PvsStudioLicense.Infrastructure.Extensions;
 
 using Microsoft.Extensions.DependencyInjection;
 

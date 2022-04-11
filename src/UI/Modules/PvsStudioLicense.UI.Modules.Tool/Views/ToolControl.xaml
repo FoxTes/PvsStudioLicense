@@ -40,14 +40,26 @@
                     <Grid Margin="0,0,0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock IsEnabled="{Binding IsValid}" Text="{Binding Path}" />
-                        <Button
-                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.RemoveProject}"
-                            CommandParameter="{Binding}"
-                            Content="Удалить"
-                            Grid.Column="1" />
+                        <TextBlock Text="{Binding Path}" />
+                        <StackPanel
+                            Grid.Column="1"
+                            IsEnabled="{Binding IsValid}"
+                            Orientation="Horizontal">
+                            <Button
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.DeleteComment}"
+                                CommandParameter="{Binding}"
+                                Content="Разкомент" />
+                            <Button
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.AddСomment}"
+                                CommandParameter="{Binding}"
+                                Content="Комент" />
+                            <Button
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.RemoveProject}"
+                                CommandParameter="{Binding}"
+                                Content="Удалить" />
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
