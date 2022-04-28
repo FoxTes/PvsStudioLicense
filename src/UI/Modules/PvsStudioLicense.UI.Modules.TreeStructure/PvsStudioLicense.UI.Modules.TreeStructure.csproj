@@ -4,14 +4,7 @@
         <UseWPF>true</UseWPF>
         <CodeAnalysisRuleSet>..\..\..\..\stylecop.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="FastEnum" Version="1.7.0" />
-        <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
-        <PackageReference Include="XamlFlair.WPF" Version="1.2.13" />
-    </ItemGroup>
-
+    
     <ItemGroup>
         <ProjectReference Include="..\..\..\Application\PvsStudioLicense.Application\PvsStudioLicense.Application.csproj" />
         <ProjectReference Include="..\..\PvsStudioLicense.Shared\PvsStudioLicense.Shared.csproj" />

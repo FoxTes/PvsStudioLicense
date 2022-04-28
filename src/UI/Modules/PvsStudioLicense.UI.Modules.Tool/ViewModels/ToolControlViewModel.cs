@@ -3,9 +3,8 @@
 using System.Reactive.Linq;
 using System.Windows.Forms;
 using Domain.Abstractions;
-using Domain.Models;
+using Domain.Entities;
 using Prism.Regions;
-using Infrastructure.Constants;
 using PvsStudioLicense.Shared.ViewModels;
 using Reactive.Bindings;
 using Shared.Constants;
@@ -27,48 +26,41 @@ public class ToolControlViewModel : NavigationViewModelBase
     {
         _projectManager = projectManager;
 
-        Projects = _projectManager
-            .GetAll()
+        Projects = Observable
+            .FromAsync(() => Task.FromResult(_projectManager.GetAll().ToList()))
             .SelectMany(x => x)
             .ToReactiveCollection();
 
-        AddProject.WithSubscribe(async _ =>
+        AddProject.Subscribe(_ =>
         {
-            var project = await ShowFolderBrowserDialog();
+            var project = ShowFolderBrowserDialog();
             if (project != null)
-                Projects.AddOnScheduler(project);
+                Projects.Add(project);
         });
 
-        RemoveProject.WithSubscribe(async project =>
+        RemoveProject.Subscribe(viewModel =>
         {
-            await _projectManager.Delete(project);
-            Projects.RemoveOnScheduler(project);
+            _projectManager.Delete(viewModel.Project);
+            Projects.Remove(viewModel.Project);
         });
 
-        AddСomment.WithSubscribe(async project =>
-        {
-            var files = fileSearcher
-                .GetFiles(project.Path)
-                .ToArray();
-            await fileEditor.WriteCommentAsync(files, TypeLicense.OpenSource);
-        });
-
-        DeleteComment.WithSubscribe(async project =>
-        {
-            var files = fileSearcher
-                .GetFiles(project.Path)
-                .ToArray();
-            await fileEditor.DeleteCommentAsync(files, TypeLicense.OpenSource);
-        });
+        ProjectViewModels = Projects
+            .ToReadOnlyReactiveCollection(x => new ProjectViewModel(fileEditor, fileSearcher, x));
 
         OpenSettings.Subscribe(() =>
             regionManager.RequestNavigate(RegionNames.MainContent, ModulesNames.Settings));
+
+        OpenStructure.Subscribe(viewModel =>
+            regionManager.RequestNavigate(
+                RegionNames.MainContent,
+                ModulesNames.Structure,
+                new NavigationParameters { { "Path", viewModel.Project.Path } }));
     }
 
     /// <summary>
-    /// Projects.
+    /// Project view models.
     /// </summary>
-    public ReactiveCollection<Project> Projects { get; set; }
+    public ReadOnlyReactiveCollection<ProjectViewModel> ProjectViewModels { get; }
 
     /// <summary>
     /// Open settings.
@@ -76,26 +68,26 @@ public class ToolControlViewModel : NavigationViewModelBase
     public ReactiveCommand OpenSettings { get; } = new();
 
     /// <summary>
-    /// Add comment.
-    /// </summary>
-    public AsyncReactiveCommand<Project> AddСomment { get; } = new();
-
-    /// <summary>
-    /// Delete comment.
-    /// </summary>
-    public AsyncReactiveCommand<Project> DeleteComment { get; } = new();
-
-    /// <summary>
     /// Add project.
     /// </summary>
-    public AsyncReactiveCommand AddProject { get; } = new();
+    public ReactiveCommand AddProject { get; } = new();
 
     /// <summary>
     /// Remove project.
     /// </summary>
-    public AsyncReactiveCommand<Project> RemoveProject { get; } = new();
+    public ReactiveCommand<ProjectViewModel> RemoveProject { get; } = new();
 
-    private async Task<Project> ShowFolderBrowserDialog()
+    /// <summary>
+    /// Open settings.
+    /// </summary>
+    public ReactiveCommand<ProjectViewModel> OpenStructure { get; } = new();
+
+    /// <summary>
+    /// Projects.
+    /// </summary>
+    private ReactiveCollection<Project> Projects { get; }
+
+    private Project ShowFolderBrowserDialog()
     {
         using var dialog = new FolderBrowserDialog();
         dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -104,12 +96,12 @@ public class ToolControlViewModel : NavigationViewModelBase
         if (dialogResult != DialogResult.OK)
             return null;
 
-        var projectCache = await _projectManager.Get(dialog.SelectedPath);
+        var projectCache = _projectManager.Get(dialog.SelectedPath);
         if (projectCache is not null)
             return null;
 
-        var project = new Project(dialog.SelectedPath);
-        await _projectManager.Add(project);
+        var project = Project.Create(dialog.SelectedPath);
+        _projectManager.Add(project);
         return project;
     }
 }

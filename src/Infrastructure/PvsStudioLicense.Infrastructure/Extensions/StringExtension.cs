@@ -3,7 +3,7 @@
 using System.Text;
 
 /// <summary>
-/// TODO.
+/// Extensions for <see cref="string"/>.
 /// </summary>
 public static class StringExtension
 {

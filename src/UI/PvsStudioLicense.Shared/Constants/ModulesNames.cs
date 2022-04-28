@@ -14,4 +14,9 @@ public static class ModulesNames
     /// Setting.
     /// </summary>
     public const string Settings = "SettingsControl";
+
+    /// <summary>
+    /// Setting.
+    /// </summary>
+    public const string Structure = "TreeStructureControl";
 }

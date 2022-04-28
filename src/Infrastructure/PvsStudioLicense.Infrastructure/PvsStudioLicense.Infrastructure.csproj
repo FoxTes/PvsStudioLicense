@@ -2,7 +2,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
-      <ProjectReference Include="..\PvsStudioLicense.Persistence\PvsStudioLicense.Persistence.csproj" />
+      <ProjectReference Include="..\PvsStudioLicense.Infrastructure.Persistence\PvsStudioLicense.Infrastructure.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,36 +1,64 @@
 ﻿namespace PvsStudioLicense.Infrastructure.Services;
 
-using System.Reactive.Linq;
-using Akavache;
 using Domain.Abstractions;
-using Domain.Models;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Persistence.Contexts;
 using Scrutor.AspNetCore;
 
 /// <inheritdoc cref="PvsStudioLicense.Domain.Abstractions.IProjectManager" />
 public class ProjectManager : IProjectManager, ISingletonLifetime
 {
-    /// <inheritdoc />
-    public IObservable<IEnumerable<Project>> GetAll() =>
-        BlobCache.LocalMachine.GetAllObjects<Project>();
+    private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
 
-    /// <inheritdoc />
-    public async Task<Project> Get(string key)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ProjectManager"/> class.
+    /// </summary>
+    /// <param name="contextFactory"><see cref="IDbContextFactory{TContext}"/>.</param>
+    public ProjectManager(IDbContextFactory<ApplicationDbContext> contextFactory)
     {
-        try
-        {
-            return await BlobCache.LocalMachine.GetObject<Project>(key);
-        }
-        catch (KeyNotFoundException)
-        {
-            return null;
-        }
+        _contextFactory = contextFactory;
+
+        CreateDatabase();
     }
 
     /// <inheritdoc />
-    public async Task Add(Project project) =>
-        await BlobCache.LocalMachine.InsertObject(project.Path, project);
+    public IEnumerable<Project> GetAll()
+    {
+        using var context = _contextFactory.CreateDbContext();
+        return context.Products
+            .AsNoTracking()
+            .ToList();
+    }
 
     /// <inheritdoc />
-    public async Task Delete(Project project) =>
-        await BlobCache.LocalMachine.InvalidateObject<Project>(project.Path);
+    public Project Get(string path)
+    {
+        using var context = _contextFactory.CreateDbContext();
+        return context.Products
+            .AsNoTracking()
+            .FirstOrDefault(x => x.Path == path);
+    }
+
+    /// <inheritdoc />
+    public void Add(Project project)
+    {
+        using var context = _contextFactory.CreateDbContext();
+        context.Products.Add(project);
+        context.SaveChanges();
+    }
+
+    /// <inheritdoc />
+    public void Delete(Project project)
+    {
+        using var context = _contextFactory.CreateDbContext();
+        context.Products.Remove(project);
+        context.SaveChanges();
+    }
+
+    private void CreateDatabase()
+    {
+        using var context = _contextFactory.CreateDbContext();
+        context.Database.EnsureCreated();
+    }
 }

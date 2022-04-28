@@ -1,32 +1,32 @@
 ﻿namespace PvsStudioLicense.Domain.Abstractions;
 
-using Models;
+using Entities;
 
 /// <summary>
-/// TODO.
+/// Project manager.
 /// </summary>
 public interface IProjectManager
 {
     /// <summary>
-    /// TODO.
+    /// Get all project.
     /// </summary>
-    IObservable<IEnumerable<Project>> GetAll();
+    IEnumerable<Project> GetAll();
 
     /// <summary>
-    /// TODO.
+    /// Get project.
     /// </summary>
-    /// <param name="key">Todo.</param>
-    Task<Project> Get(string key);
+    /// <param name="path">Path to project.</param>
+    Project Get(string path);
 
     /// <summary>
-    /// TODO.
+    /// Add project.
     /// </summary>
-    /// <param name="project">Todo.</param>
-    Task Add(Project project);
+    /// <param name="project">Project.</param>
+    void Add(Project project);
 
     /// <summary>
-    /// TODO.
+    /// Delete project.
     /// </summary>
-    /// <param name="project">Todo.</param>
-    Task Delete(Project project);
+    /// <param name="project">Project.</param>
+    void Delete(Project project);
 }

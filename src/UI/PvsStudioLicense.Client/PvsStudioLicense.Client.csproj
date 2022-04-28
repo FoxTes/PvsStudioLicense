@@ -8,8 +8,10 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Application\PvsStudioLicense.Application\PvsStudioLicense.Application.csproj" />
       <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\PvsStudioLicense.Infrastructure.Persistence\PvsStudioLicense.Infrastructure.Persistence.csproj" />
       <ProjectReference Include="..\..\Infrastructure\PvsStudioLicense.Infrastructure\PvsStudioLicense.Infrastructure.csproj" />
       <ProjectReference Include="..\Modules\PvsStudioLicense.UI.Modules.Tool\PvsStudioLicense.UI.Modules.Tool.csproj" />
+      <ProjectReference Include="..\Modules\PvsStudioLicense.UI.Modules.TreeStructure\PvsStudioLicense.UI.Modules.TreeStructure.csproj" />
       <ProjectReference Include="..\PvsStudioLicense.Shared\PvsStudioLicense.Shared.csproj" />
       <ProjectReference Include="..\Modules\PvsStudioLicense.UI.Modules.Settings\PvsStudioLicense.UI.Modules.Settings.csproj" />
     </ItemGroup>

@@ -1,29 +1,21 @@
-﻿namespace PvsStudioLicense.Domain.Models;
+﻿namespace PvsStudioLicense.Domain.Entities;
+
+using Common;
 
 /// <summary>
 /// Project.
 /// </summary>
-public record Project
+public class Project : BaseEntity
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Project"/> class.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    public Project(string path)
-    {
-        Path = path;
-        Name = path;
-    }
-
     /// <summary>
     /// Path.
     /// </summary>
-    public string Path { get; }
+    public string Path { get; private init; }
 
     /// <summary>
     /// Name.
     /// </summary>
-    public string Name { get; }
+    public string Name { get; private init; }
 
     /// <summary>
     /// IsValid.
@@ -34,6 +26,19 @@ public record Project
     /// IsPined.
     /// </summary>
     public bool IsPined { get; private set; }
+
+    /// <summary>
+    /// Create project.
+    /// </summary>
+    /// <param name="path">Path.</param>
+    public static Project Create(string path)
+    {
+        return new Project
+        {
+            Path = path,
+            Name = path
+        };
+    }
 
     /// <summary>
     /// Changed status pined.

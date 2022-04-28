@@ -1,7 +1,1 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-    <ItemGroup>
-      <PackageReference Include="akavache.core" Version="8.1.1" />
-    </ItemGroup>
-
-</Project>
+<Project Sdk="Microsoft.NET.Sdk" />

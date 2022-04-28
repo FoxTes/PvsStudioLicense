@@ -1,7 +1,7 @@
 namespace PvsStudioLicense.Domain.Abstractions;
 
 /// <summary>
-/// TODO.
+/// File searcher.
 /// </summary>
 public interface IFileSearcher
 {

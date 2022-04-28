@@ -7,9 +7,9 @@ using System.Windows;
 using System.Windows.Threading;
 using FastEnumUtility;
 using HandyControl.Tools;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Persistence.Extensions;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -17,6 +17,7 @@ using Serilog;
 using Shared.Models;
 using UI.Modules.Settings;
 using UI.Modules.Tool;
+using UI.Modules.TreeStructure;
 using Unity;
 using Unity.Microsoft.DependencyInjection;
 using Views;
@@ -60,6 +61,7 @@ public partial class App
     {
         moduleCatalog.AddModule<ToolModule>();
         moduleCatalog.AddModule<SettingsModule>();
+        moduleCatalog.AddModule<TreeStructureModule>();
     }
 
     /// <inheritdoc />
@@ -71,7 +73,7 @@ public partial class App
         serviceCollection
             .AddLogging(loggingBuilder => loggingBuilder
                 .AddSerilog(dispose: true))
-            .AddPersistence()
+            .AddPersistence(_configuration)
             .AddAdvancedDependencyInjection();
 
         var container = new UnityContainer();
@@ -87,6 +89,12 @@ public partial class App
         SetApplicationLanguage();
 
         return Container.Resolve<MainWindow>();
+    }
+
+    private static void CreateDatabase()
+    {
+        var settings = GlobalDataHelper.Load<ApplicationConfig>();
+        ConfigHelper.Instance.SetLang(settings.Language.GetEnumMemberValue());
     }
 
     private static void SetApplicationLanguage()

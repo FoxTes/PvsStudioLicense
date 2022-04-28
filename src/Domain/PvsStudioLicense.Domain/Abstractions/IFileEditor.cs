@@ -1,41 +1,41 @@
 namespace PvsStudioLicense.Domain.Abstractions;
 
 /// <summary>
-/// Todo.
+/// File editor.
 /// </summary>
 public interface IFileEditor
 {
     /// <summary>
-    /// TODO.
+    /// Sets the commentary to the specified file..
     /// </summary>
-    /// <param name="files"></param>
-    /// <param name="comment"></param>
+    /// <param name="files">Files.</param>
+    /// <param name="comment">Comment.</param>
     void WriteComment(IEnumerable<string> files, string comment);
 
     /// <summary>
-    /// TODO.
+    /// Asynchronously sets a comment to the specified file.
     /// </summary>
-    /// <param name="files"></param>
-    /// <param name="comment"></param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="files">Files.</param>
+    /// <param name="comment">Comment.</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
     Task WriteCommentAsync(
         IEnumerable<string> files,
         string comment,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// TODO.
+    /// Deleted the commentary to the specified file..
     /// </summary>
-    /// <param name="files"></param>
-    /// <param name="comment"></param>
+    /// <param name="files">Files.</param>
+    /// <param name="comment">Comment.</param>
     void DeleteComment(IEnumerable<string> files, string comment);
 
     /// <summary>
-    /// TODO.
+    /// Asynchronously deleted a comment to the specified file.
     /// </summary>
-    /// <param name="files"></param>
-    /// <param name="comment"></param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="files">Files.</param>
+    /// <param name="comment">Comment.</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
     Task DeleteCommentAsync(
         IEnumerable<string> files,
         string comment,
