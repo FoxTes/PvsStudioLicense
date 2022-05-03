@@ -2,8 +2,11 @@
 
 using System.Reactive.Linq;
 using System.Windows.Forms;
+using CSharpFunctionalExtensions;
 using Domain.Abstractions;
 using Domain.Entities;
+using HandyControl.Controls;
+using Infrastructure.Extensions;
 using Prism.Regions;
 using PvsStudioLicense.Shared.ViewModels;
 using Reactive.Bindings;
@@ -15,8 +18,6 @@ using Views;
 /// </summary>
 public class ToolControlViewModel : NavigationViewModelBase
 {
-    private readonly IProjectManager _projectManager;
-
     /// <inheritdoc />
     public ToolControlViewModel(
         IFileEditor fileEditor,
@@ -24,28 +25,40 @@ public class ToolControlViewModel : NavigationViewModelBase
         IRegionManager regionManager,
         IProjectManager projectManager)
     {
-        _projectManager = projectManager;
-
         Projects = Observable
-            .FromAsync(() => Task.FromResult(_projectManager.GetAll().ToList()))
+            .FromAsync(() =>
+                Task.FromResult(projectManager.GetAll().ToList()))
             .SelectMany(x => x)
             .ToReactiveCollection();
 
+        ProjectViewModels = Projects
+            .ToReadOnlyReactiveCollection(x => new ProjectViewModel(fileEditor, fileSearcher, x));
+
+        PinedProject.Subscribe(viewModel =>
+        {
+            viewModel.Project.ChangedStatusPined(true)
+                .Bind(() => projectManager.Update(viewModel.Project))
+                .OnFailure(error => Growl.Error(error));
+        });
+
         AddProject.Subscribe(_ =>
         {
-            var project = ShowFolderBrowserDialog();
-            if (project != null)
-                Projects.Add(project);
+            ShowFolderBrowserDialog()
+                .MapIf(x => projectManager.Get(x).IsSuccess, Project.Create)
+                .TapIf(project => projectManager.Add(project).IsSuccess, project => Projects.Add(project))
+                .OnFailure(error =>
+                {
+                    if (error != Result.DefaultNoValueExceptionMessage)
+                        Growl.Error(error);
+                });
         });
 
         RemoveProject.Subscribe(viewModel =>
         {
-            _projectManager.Delete(viewModel.Project);
-            Projects.Remove(viewModel.Project);
+            projectManager.Delete(viewModel.Project)
+                .Tap(() => Projects.Remove(viewModel.Project))
+                .OnFailure(error => Growl.Error(error));
         });
-
-        ProjectViewModels = Projects
-            .ToReadOnlyReactiveCollection(x => new ProjectViewModel(fileEditor, fileSearcher, x));
 
         OpenSettings.Subscribe(() =>
             regionManager.RequestNavigate(RegionNames.MainContent, ModulesNames.Settings));
@@ -73,6 +86,11 @@ public class ToolControlViewModel : NavigationViewModelBase
     public ReactiveCommand AddProject { get; } = new();
 
     /// <summary>
+    /// Pined project.
+    /// </summary>
+    public ReactiveCommand<ProjectViewModel> PinedProject { get; } = new();
+
+    /// <summary>
     /// Remove project.
     /// </summary>
     public ReactiveCommand<ProjectViewModel> RemoveProject { get; } = new();
@@ -87,21 +105,14 @@ public class ToolControlViewModel : NavigationViewModelBase
     /// </summary>
     private ReactiveCollection<Project> Projects { get; }
 
-    private Project ShowFolderBrowserDialog()
+    private static Result<string> ShowFolderBrowserDialog()
     {
         using var dialog = new FolderBrowserDialog();
         dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         var dialogResult = dialog.ShowDialog();
-        if (dialogResult != DialogResult.OK)
-            return null;
-
-        var projectCache = _projectManager.Get(dialog.SelectedPath);
-        if (projectCache is not null)
-            return null;
-
-        var project = Project.Create(dialog.SelectedPath);
-        _projectManager.Add(project);
-        return project;
+        return dialogResult != DialogResult.OK
+            ? Result.Failure<string>(Result.DefaultNoValueExceptionMessage)
+            : Result.Success(dialog.SelectedPath);
     }
 }

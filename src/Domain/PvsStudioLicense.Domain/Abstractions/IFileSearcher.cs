@@ -1,5 +1,7 @@
 namespace PvsStudioLicense.Domain.Abstractions;
 
+using CSharpFunctionalExtensions;
+
 /// <summary>
 /// File searcher.
 /// </summary>
@@ -13,5 +15,5 @@ public interface IFileSearcher
     /// This string is not case-sensitive.</param>
     /// <returns> An enumerable collection of the full names (including paths)
     /// for the files in the directory.</returns>
-    IEnumerable<string> GetFiles(string path);
+    Result<IEnumerable<string>> GetFiles(string path);
 }

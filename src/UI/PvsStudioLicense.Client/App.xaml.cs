@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
+using Infrastructure.Extensions;
 using Serilog;
 using Shared.Models;
 using UI.Modules.Settings;
@@ -73,6 +74,7 @@ public partial class App
         serviceCollection
             .AddLogging(loggingBuilder => loggingBuilder
                 .AddSerilog(dispose: true))
+            .AddFileSystem()
             .AddPersistence(_configuration)
             .AddAdvancedDependencyInjection();
 
@@ -89,12 +91,6 @@ public partial class App
         SetApplicationLanguage();
 
         return Container.Resolve<MainWindow>();
-    }
-
-    private static void CreateDatabase()
-    {
-        var settings = GlobalDataHelper.Load<ApplicationConfig>();
-        ConfigHelper.Instance.SetLang(settings.Language.GetEnumMemberValue());
     }
 
     private static void SetApplicationLanguage()

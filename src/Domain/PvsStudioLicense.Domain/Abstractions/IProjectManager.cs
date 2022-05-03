@@ -1,32 +1,40 @@
-﻿namespace PvsStudioLicense.Domain.Abstractions;
-
-using Entities;
-
-/// <summary>
-/// Project manager.
-/// </summary>
-public interface IProjectManager
+﻿namespace PvsStudioLicense.Domain.Abstractions
 {
-    /// <summary>
-    /// Get all project.
-    /// </summary>
-    IEnumerable<Project> GetAll();
+    using CSharpFunctionalExtensions;
+    using Entities;
 
     /// <summary>
-    /// Get project.
+    /// Project manager.
     /// </summary>
-    /// <param name="path">Path to project.</param>
-    Project Get(string path);
+    public interface IProjectManager
+    {
+        /// <summary>
+        /// Get all project.
+        /// </summary>
+        IEnumerable<Project> GetAll();
 
-    /// <summary>
-    /// Add project.
-    /// </summary>
-    /// <param name="project">Project.</param>
-    void Add(Project project);
+        /// <summary>
+        /// Get project.
+        /// </summary>
+        /// <param name="path">Path to project.</param>
+        Result<Project> Get(string path);
 
-    /// <summary>
-    /// Delete project.
-    /// </summary>
-    /// <param name="project">Project.</param>
-    void Delete(Project project);
+        /// <summary>
+        /// Add project.
+        /// </summary>
+        /// <param name="project">Project.</param>
+        Result Add(Project project);
+
+        /// <summary>
+        /// Update project.
+        /// </summary>
+        /// <param name="project">Project.</param>
+        Result Update(Project project);
+
+        /// <summary>
+        /// Delete project.
+        /// </summary>
+        /// <param name="project">Project.</param>
+        Result Delete(Project project);
+    }
 }

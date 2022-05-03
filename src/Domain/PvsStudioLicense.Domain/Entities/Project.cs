@@ -1,15 +1,19 @@
 ﻿namespace PvsStudioLicense.Domain.Entities;
 
-using Common;
+using System.ComponentModel.DataAnnotations;
+using CSharpFunctionalExtensions;
+using Microsoft.EntityFrameworkCore;
 
 /// <summary>
 /// Project.
 /// </summary>
-public class Project : BaseEntity
+[Index(nameof(Path), IsUnique = true)]
+public class Project : Entity
 {
     /// <summary>
     /// Path.
     /// </summary>
+    [Required]
     public string Path { get; private init; }
 
     /// <summary>
@@ -36,7 +40,7 @@ public class Project : BaseEntity
         return new Project
         {
             Path = path,
-            Name = path
+            Name = System.IO.Path.GetFileName(path)
         };
     }
 
@@ -44,7 +48,11 @@ public class Project : BaseEntity
     /// Changed status pined.
     /// </summary>
     /// <param name="status">Status.</param>
-    public void ChangedStatusPined(bool status) => IsPined = status;
+    public Result ChangedStatusPined(bool status)
+    {
+        IsPined = status;
+        return Result.Success();
+    }
 
     private bool GetStatusValid() => Directory.Exists(Path);
 }

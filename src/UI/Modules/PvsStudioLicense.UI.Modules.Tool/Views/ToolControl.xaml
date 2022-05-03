@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Border Background="Beige" Margin="0" />
+                <Border Background="DarkGray" Margin="0" />
 
                 <Button
                     Command="{Binding OpenSettings}"
@@ -55,6 +55,10 @@
                         <Grid.ContextMenu>
                             <ContextMenu>
                                 <MenuItem
+                                    Command="{Binding Value.PinedProject, Source={StaticResource Proxy}}"
+                                    CommandParameter="{Binding}"
+                                    Header="Закрепить проект" />
+                                <MenuItem
                                     Command="{Binding Value.RemoveProject, Source={StaticResource Proxy}}"
                                     CommandParameter="{Binding}"
                                     Header="Удалить проект" />
@@ -62,6 +66,7 @@
                                     Command="{Binding Value.OpenStructure, Source={StaticResource Proxy}}"
                                     CommandParameter="{Binding}"
                                     Header="Структура проекта" />
+
                             </ContextMenu>
                         </Grid.ContextMenu>
                         <TextBlock Text="{Binding Project.Path}" />

@@ -11,6 +11,7 @@
                 <hc:ThemeResources />
                 <hc:Theme />
                 <xamlFlair:XamlFlairResources />
+                <ResourceDictionary Source="/HandyControl;Component/Themes/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

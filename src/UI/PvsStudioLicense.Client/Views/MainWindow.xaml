@@ -6,7 +6,7 @@
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     hc:LocalizationManager.Provider="PvsStudioLicense.Client;Assets.Strings"
     mc:Ignorable="d"
-    regions:RegionManager.RegionName="{x:Static core:RegionNames.MainContent}"
+   
     x:Class="PvsStudioLicense.Client.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:core="clr-namespace:PvsStudioLicense.Shared.Constants;assembly=PvsStudioLicense.Shared"
@@ -14,5 +14,14 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:regions="http://prismlibrary.com/"
+    hc:Growl.GrowlParent="True"
     xmlns:vm="clr-namespace:PvsStudioLicense.Client.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <ContentControl regions:RegionManager.RegionName="{x:Static core:RegionNames.MainContent}" />
+        
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

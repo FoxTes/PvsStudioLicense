@@ -1,7 +1,9 @@
 ﻿namespace PvsStudioLicense.Infrastructure.Services;
 
+using CSharpFunctionalExtensions;
 using Domain.Abstractions;
 using Domain.Entities;
+using EntityFramework.Exceptions.Common;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Scrutor.AspNetCore;
@@ -32,7 +34,7 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
     }
 
     /// <inheritdoc />
-    public Project Get(string path)
+    public Result<Project> Get(string path)
     {
         using var context = _contextFactory.CreateDbContext();
         return context.Products
@@ -41,19 +43,53 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
     }
 
     /// <inheritdoc />
-    public void Add(Project project)
+    public Result Add(Project project)
     {
         using var context = _contextFactory.CreateDbContext();
         context.Products.Add(project);
-        context.SaveChanges();
+
+        try
+        {
+            var result = context.SaveChanges();
+            return result > 0
+                ? Result.Success()
+                : Result.Failure("Не удалось добавить проект в базу данных.");
+        }
+        catch (UniqueConstraintException)
+        {
+            return Result.Failure("Проект с таким именем уже существует в базе данных.");
+        }
+        catch (Exception)
+        {
+            return Result.Failure("Не удалось добавить проект в базу данных.");
+        }
     }
 
     /// <inheritdoc />
-    public void Delete(Project project)
+    public Result Update(Project project)
     {
         using var context = _contextFactory.CreateDbContext();
-        context.Products.Remove(project);
+        context.Products.Update(project);
+        var result = context.SaveChanges();
+
+        return result > 0
+            ? Result.Success()
+            : Result.Failure("Не удалось обновить проект в базе данных.");
+    }
+
+    /// <inheritdoc />
+    public Result Delete(Project project)
+    {
+        using var context = _contextFactory.CreateDbContext();
+
+        var entity = context.Products.Find(project.Id);
+        if (entity == null)
+            return Result.Failure("Не удалось удалить проект в базе данных.");
+
+        context.Products.Remove(entity);
         context.SaveChanges();
+
+        return Result.Success();
     }
 
     private void CreateDatabase()
