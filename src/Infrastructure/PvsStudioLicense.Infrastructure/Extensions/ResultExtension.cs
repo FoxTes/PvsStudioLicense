@@ -8,7 +8,8 @@ namespace PvsStudioLicense.Infrastructure.Extensions
     public static class ResultExtension
     {
         /// <summary>
-        /// Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+        /// Executes the given action if the calling result is a success and condition is true.
+        /// Returns the calling result.
         /// </summary>
         /// <param name="result"><see cref="Result{T}"/>.</param>
         /// <param name="predicate">Predicate.</param>
@@ -20,7 +21,9 @@ namespace PvsStudioLicense.Infrastructure.Extensions
             Func<T, bool> predicate,
             Func<T, TK> func)
         {
-            return result.IsSuccess && predicate(result.Value) ? result.Map(func) : Result.Failure<TK>(result.Error);
+            return result.IsSuccess && predicate(result.Value)
+                ? result.Map(func)
+                : Result.Failure<TK>(result.Error);
         }
     }
 }
