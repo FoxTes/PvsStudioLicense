@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![image](https://user-images.githubusercontent.com/55885862/166884291-fd138ea4-480c-4b3b-9a73-c352e6a2d7b6.png)
 
 Insert comment for using PVS-Studio freely. More details here: https://www.viva64.com/en/b/0457/
 
@@ -81,9 +81,14 @@ Insert comment for using PVS-Studio freely. More details here: https://www.viva6
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+![example](https://user-images.githubusercontent.com/55885862/166885470-be196c50-9528-44d6-ab8b-394b75c2e11e.gif)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+When you install click the "Comment" button, then each file will have a comment of this kind at the beginning:
+
+![image](https://user-images.githubusercontent.com/55885862/166885779-5730100b-e9df-446d-9a25-88cae399ebf6.png)
+
+After all the work, you can delete them.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -142,14 +147,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/FoxTes/PvsStudioLicense.svg?style=for-the-badge
 [contributors-url]: https://github.com/FoxTes/PvsStudioLicense/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/FoxTes/PvsStudioLicense.svg?style=for-the-badge
 [forks-url]: https://github.com/FoxTes/PvsStudioLicense/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/FoxTes/PvsStudioLicense.svg?style=for-the-badge
 [stars-url]: https://github.com/FoxTes/PvsStudioLicense/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/FoxTes/PvsStudioLicense.svg?style=for-the-badge
 [issues-url]: https://github.com/FoxTes/PvsStudioLicense/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/FoxTes/PvsStudioLicense/blob/main/LICENSE
-[product-screenshot]: images/screenshot.png
