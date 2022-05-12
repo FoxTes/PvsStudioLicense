@@ -4,8 +4,19 @@
         <UseWpf>true</UseWpf>
         <OutputType>WinExe</OutputType>
     </PropertyGroup>
+
+  <PropertyGroup>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PlatformTarget>x64</PlatformTarget>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
   
-    <ItemGroup>
+  <ItemGroup>
       <ProjectReference Include="..\..\Application\PvsStudioLicense.Application\PvsStudioLicense.Application.csproj" />
       <ProjectReference Include="..\..\Domain\PvsStudioLicense.Domain\PvsStudioLicense.Domain.csproj" />
       <ProjectReference Include="..\..\Infrastructure\PvsStudioLicense.Infrastructure.Persistence\PvsStudioLicense.Infrastructure.Persistence.csproj" />
