@@ -1,6 +1,7 @@
 ﻿namespace PvsStudioLicense.Infrastructure.Persistence.Extensions;
 
 using Contexts;
+using EntityFramework.Exceptions.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,7 @@ public static class ServiceCollectionExtension
         services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
             options
                 .UseSqlite(configuration.GetConnectionString("DefaultConnection"))
+                .UseExceptionProcessor()
                 .LogTo(Log.Logger.Information, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors());
