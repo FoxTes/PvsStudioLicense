@@ -4,10 +4,8 @@
         <UseWpf>true</UseWpf>
         <OutputType>WinExe</OutputType>
     </PropertyGroup>
-
-  <PropertyGroup>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PlatformTarget>x64</PlatformTarget>
+  
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
