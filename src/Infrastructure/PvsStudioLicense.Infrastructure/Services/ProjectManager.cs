@@ -29,8 +29,7 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
     {
         using var context = _contextFactory.CreateDbContext();
         return context.Products
-            .AsNoTracking()
-            .ToList();
+            .AsNoTracking();
     }
 
     /// <inheritdoc />
@@ -39,7 +38,7 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
         using var context = _contextFactory.CreateDbContext();
         return context.Products
             .AsNoTracking()
-            .FirstOrDefault(x => x.Path == path) ?? new Project();
+            .FirstOrDefault(x => x.Path == path) ?? Result.Failure<Project>("Не удалось найти проект в базе данных.");
     }
 
     /// <inheritdoc />

@@ -27,7 +27,7 @@ public class ToolControlViewModel : NavigationViewModelBase
     {
         Projects = Observable
             .FromAsync(() =>
-                Task.FromResult(projectManager.GetAll().ToList()))
+                Task.FromResult(projectManager.GetAll().ToArray()))
             .SelectMany(x => x)
             .ToReactiveCollection();
 
