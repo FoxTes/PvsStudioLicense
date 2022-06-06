@@ -1,5 +1,6 @@
 ﻿namespace PvsStudioLicense.Domain.Abstractions;
 
+using System.Collections.Immutable;
 using CSharpFunctionalExtensions;
 using Entities;
 
@@ -11,7 +12,7 @@ public interface IProjectManager
     /// <summary>
     /// Get all project.
     /// </summary>
-    IEnumerable<Project> GetAll();
+    ImmutableArray<Project> GetAll();
 
     /// <summary>
     /// Get project.

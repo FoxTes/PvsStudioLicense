@@ -1,5 +1,6 @@
 ﻿namespace PvsStudioLicense.Infrastructure.Services;
 
+using System.Collections.Immutable;
 using CSharpFunctionalExtensions;
 using Domain.Abstractions;
 using Domain.Entities;
@@ -25,11 +26,12 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
     }
 
     /// <inheritdoc />
-    public IEnumerable<Project> GetAll()
+    public ImmutableArray<Project> GetAll()
     {
         using var context = _contextFactory.CreateDbContext();
         return context.Products
-            .AsNoTracking();
+            .AsNoTracking()
+            .ToImmutableArray();
     }
 
     /// <inheritdoc />
