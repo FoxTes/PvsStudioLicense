@@ -13,10 +13,10 @@ public class ApplicationConfig : GlobalDataHelper
     public Language Language { get; set; }
 
     /// <inheritdoc />
-    public override string FileName { get; set; }
+    public override string FileName { get; set; } = null!;
 
     /// <inheritdoc />
-    public override JsonSerializerOptions JsonSerializerOptions { get; set; }
+    public override JsonSerializerOptions JsonSerializerOptions { get; set; } = null!;
 
     /// <inheritdoc />
     public override int FileVersion { get; set; }

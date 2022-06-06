@@ -14,12 +14,12 @@ public class Project : Entity
     /// Path.
     /// </summary>
     [Required]
-    public string Path { get; private init; }
+    public string Path { get; private init; } = null!;
 
     /// <summary>
     /// Name.
     /// </summary>
-    public string Name { get; private init; }
+    public string Name { get; private init; } = null!;
 
     /// <summary>
     /// IsValid.

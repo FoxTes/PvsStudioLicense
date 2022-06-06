@@ -39,7 +39,7 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
         using var context = _contextFactory.CreateDbContext();
         return context.Products
             .AsNoTracking()
-            .FirstOrDefault(x => x.Path == path);
+            .FirstOrDefault(x => x.Path == path) ?? new Project();
     }
 
     /// <inheritdoc />
