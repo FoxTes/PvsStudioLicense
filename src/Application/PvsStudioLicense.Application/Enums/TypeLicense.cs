@@ -1,9 +1,9 @@
 namespace PvsStudioLicense.Application.Enums;
 
 using System.ComponentModel;
-using Client.Assets;
 using HandyControl.Controls;
 using HandyControl.Tools.Converter;
+using Assets;
 
 /// <summary>
 /// Type license.

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PvsStudioLicense.Client.Assets {
+namespace PvsStudioLicense.Application.Assets {
     using System;
     
     

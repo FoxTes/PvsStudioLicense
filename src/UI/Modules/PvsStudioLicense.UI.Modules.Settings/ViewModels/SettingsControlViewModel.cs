@@ -4,9 +4,9 @@ using Application.Enums;
 using FastEnumUtility;
 using HandyControl.Tools;
 using Prism.Regions;
-using Shared.Models;
 using Reactive.Bindings;
 using Shared.Constants;
+using Shared.Models;
 using Shared.ViewModels;
 
 /// <summary>
