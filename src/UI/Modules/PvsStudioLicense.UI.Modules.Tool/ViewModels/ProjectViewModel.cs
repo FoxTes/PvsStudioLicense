@@ -27,7 +27,7 @@ public class ProjectViewModel : ViewModelBase
             .WithSubscribe(async () =>
             {
                 await fileSearcher.GetFiles(Project.Path)
-                    .Bind(x => fileEditor.WriteCommentAsync(x, TypeLicense.OpenSource))
+                    .Bind(x => fileEditor.WriteCommentAsync(x, TypeLicenseDescription.OpenSource))
                     .Tap(ShowResultСommentNotification)
                     .OnFailure(error => Growl.Error(error));
             });
@@ -37,7 +37,7 @@ public class ProjectViewModel : ViewModelBase
             .WithSubscribe(async () =>
             {
                 await fileSearcher.GetFiles(Project.Path)
-                    .Bind(x => fileEditor.DeleteCommentAsync(x, TypeLicense.OpenSource))
+                    .Bind(x => fileEditor.DeleteCommentAsync(x, TypeLicenseDescription.OpenSource))
                     .Tap(ShowResultUncommentNotification)
                     .OnFailure(error => Growl.Error(error));
             });

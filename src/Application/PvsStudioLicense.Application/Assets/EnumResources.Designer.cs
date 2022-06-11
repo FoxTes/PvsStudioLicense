@@ -22,14 +22,14 @@ namespace PvsStudioLicense.Client.Assets {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings_en_US {
+    internal class EnumResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings_en_US() {
+        internal EnumResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PvsStudioLicense.Client.Assets {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PvsStudioLicense.Client.Assets.Strings.en-US", typeof(Strings_en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PvsStudioLicense.Application.Assets.EnumResources", typeof(EnumResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace PvsStudioLicense.Client.Assets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string AboutName {
+        internal static string Test1 {
             get {
-                return ResourceManager.GetString("AboutName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        internal static string SettingsName {
-            get {
-                return ResourceManager.GetString("SettingsName", resourceCulture);
+                return ResourceManager.GetString("Test1", resourceCulture);
             }
         }
     }

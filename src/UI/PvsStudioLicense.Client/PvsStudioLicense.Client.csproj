@@ -61,35 +61,35 @@
     </ItemGroup>
     
     <ItemGroup>
-      <EmbeddedResource Update="Assets\Strings.resx">
+      <EmbeddedResource Update="Assets\LangResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+        <LastGenOutput>LangResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Assets\Strings.ru-RU.resx">
+      <EmbeddedResource Update="Assets\LangResources.ru-RU.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Strings.ru-RU.Designer.cs</LastGenOutput>
+        <LastGenOutput>LangResources.ru-RU.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Assets\Strings.en-US.resx">
+      <EmbeddedResource Update="Assets\LangResources.en-US.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Strings.en-US.Designer.cs</LastGenOutput>
+        <LastGenOutput>LangResources.en-US.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
     
     <ItemGroup>
-      <Compile Update="Assets\Strings.Designer.cs">
+      <Compile Update="Assets\LangResources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>Strings.resx</DependentUpon>
+        <DependentUpon>LangResources.resx</DependentUpon>
       </Compile>
-      <Compile Update="Assets\Strings.ru-RU.Designer.cs">
+      <Compile Update="Assets\LangResources.ru-RU.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>Strings.ru-RU.resx</DependentUpon>
+        <DependentUpon>LangResources.ru-RU.resx</DependentUpon>
       </Compile>
-      <Compile Update="Assets\Strings.en-US.Designer.cs">
+      <Compile Update="Assets\LangResources.en-US.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>Strings.en-US.resx</DependentUpon>
+        <DependentUpon>LangResources.en-US.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

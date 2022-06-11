@@ -10,7 +10,7 @@ using Persistence.Contexts;
 using Scrutor.AspNetCore;
 
 /// <inheritdoc cref="PvsStudioLicense.Domain.Abstractions.IProjectManager" />
-public class ProjectManager : IProjectManager, ISingletonLifetime
+public class ProjectManager : IProjectManager, ITransientLifetime
 {
     private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
 
@@ -26,12 +26,14 @@ public class ProjectManager : IProjectManager, ISingletonLifetime
     }
 
     /// <inheritdoc />
-    public ImmutableArray<Project> GetAll()
+    public Result<ImmutableArray<Project>> GetAll()
     {
         using var context = _contextFactory.CreateDbContext();
-        return context.Products
+        var result = context.Products
             .AsNoTracking()
             .ToImmutableArray();
+
+        return Result.Success(result);
     }
 
     /// <inheritdoc />

@@ -3,7 +3,7 @@
 /// <summary>
 /// License type.
 /// </summary>
-public static class TypeLicense
+public static class TypeLicenseDescription
 {
     /// <summary>
     /// Individual.

@@ -9,4 +9,52 @@
       <PackageReference Include="HandyControls" Version="3.3.11" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Assets\EnumResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Assets\EnumResources.en-US.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.en-US.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Assets\EnumResources.ru-RU.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.ru-RU.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Assets\LangResources.en-US.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.en-US.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Assets\LangResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Assets\LangResources.ru-RU.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LangResources.ru-RU.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Assets\EnumResources.en-US.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnumResources.en-US.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Assets\EnumResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnumResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Assets\EnumResources.ru-RU.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnumResources.ru-RU.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
 </Project>

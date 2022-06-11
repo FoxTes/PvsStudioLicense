@@ -12,7 +12,7 @@ public interface IProjectManager
     /// <summary>
     /// Get all project.
     /// </summary>
-    ImmutableArray<Project> GetAll();
+    Result<ImmutableArray<Project>> GetAll();
 
     /// <summary>
     /// Get project.

@@ -4,7 +4,7 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
-    hc:LocalizationManager.Provider="PvsStudioLicense.Client;Assets.Strings"
+    hc:LocalizationManager.Provider="PvsStudioLicense.Client;Assets.LangResources"
     mc:Ignorable="d"
    
     x:Class="PvsStudioLicense.Client.Views.MainWindow"
