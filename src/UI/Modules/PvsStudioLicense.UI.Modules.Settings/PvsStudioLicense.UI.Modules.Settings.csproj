@@ -8,7 +8,7 @@
     <ItemGroup>
         <PackageReference Include="FastEnum" Version="1.7.0" />
         <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
+        <PackageReference Include="ReactiveProperty" Version="8.1.2" />
         <PackageReference Include="XamlFlair.WPF" Version="1.2.13" />
     </ItemGroup>
 

@@ -9,7 +9,7 @@
         <PackageReference Include="HandyControls" Version="3.3.11" />
         <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
         <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-        <PackageReference Include="ReactiveProperty" Version="8.0.3" />
+        <PackageReference Include="ReactiveProperty" Version="8.1.2" />
         <PackageReference Include="XamlFlair.WPF" Version="1.2.13" />
     </ItemGroup>
 
