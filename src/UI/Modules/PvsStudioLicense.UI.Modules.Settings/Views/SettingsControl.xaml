@@ -46,7 +46,15 @@
                             SelectedItem="{Binding LanguageSelected.Value}"
                             Style="{StaticResource ComboBoxExtend}"
                             Width="200"
-                            hc:InfoElement.Title="Language"
+                            hc:InfoElement.Title="{hc:Localization Key=LanguageName}"
+                            hc:InfoElement.TitlePlacement="Left"
+                            hc:InfoElement.TitleWidth="100" />
+                        
+                        <hc:ComboBox
+                            ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enums:TypeLicense}}}"
+                            Style="{StaticResource ComboBoxExtend}"
+                            Width="200"
+                            hc:InfoElement.Title="{hc:Localization Key=TypeLicenseName}"
                             hc:InfoElement.TitlePlacement="Left"
                             hc:InfoElement.TitleWidth="100" />
 
@@ -63,14 +71,7 @@
                                 <RadioButton Content="Dark" />
                             </hc:ButtonGroup>
                         </GroupBox>
-                        
-                        <hc:ComboBox
-                            ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enums:TypeLicense}}}"
-                            Style="{StaticResource ComboBoxExtend}"
-                            Width="200"
-                            hc:InfoElement.Title="Language"
-                            hc:InfoElement.TitlePlacement="Left"
-                            hc:InfoElement.TitleWidth="100" />
+
                     </StackPanel>
                 </hc:TransitioningContentControl>
             </TabItem>

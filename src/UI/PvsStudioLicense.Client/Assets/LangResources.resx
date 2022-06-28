@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <root>
     <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -18,10 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="SettingsName" xml:space="preserve">
+    <data name="AboutName" xml:space="preserve">
         <value />
     </data>
-    <data name="AboutName" xml:space="preserve">
+    <data name="TypeLicenseName" xml:space="preserve">
+        <value />
+    </data>
+    <data name="LanguageName" xml:space="preserve">
         <value />
     </data>
 </root>

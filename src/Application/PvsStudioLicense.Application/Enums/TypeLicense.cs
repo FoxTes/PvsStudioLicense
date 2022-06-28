@@ -14,18 +14,18 @@ public enum TypeLicense
     /// <summary>
     /// Individual.
     /// </summary>
-    [LocalizedDescription("Test1", typeof(EnumResources))]
+    [LocalizedDescription("Individual", typeof(EnumResources))]
     Individual,
 
     /// <summary>
     /// OpenSource.
     /// </summary>
-    [Description("This is horrible")]
+    [LocalizedDescription("OpenSource", typeof(EnumResources))]
     OpenSource,
 
     /// <summary>
     /// Student.
     /// </summary>
-    [Description("This is horrible1")]
+    [LocalizedDescription("Student", typeof(EnumResources))]
     Student
 }

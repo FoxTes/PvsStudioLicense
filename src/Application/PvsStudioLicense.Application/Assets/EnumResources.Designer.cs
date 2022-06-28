@@ -63,9 +63,27 @@ namespace PvsStudioLicense.Application.Assets {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Test1 {
+        internal static string Individual {
             get {
-                return ResourceManager.GetString("Test1", resourceCulture);
+                return ResourceManager.GetString("Individual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string OpenSource {
+            get {
+                return ResourceManager.GetString("OpenSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
             }
         }
     }

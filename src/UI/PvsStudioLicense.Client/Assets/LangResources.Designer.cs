@@ -72,9 +72,18 @@ namespace PvsStudioLicense.Client.Assets {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string SettingsName {
+        internal static string LanguageName {
             get {
-                return ResourceManager.GetString("SettingsName", resourceCulture);
+                return ResourceManager.GetString("LanguageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string TypeLicenseName {
+            get {
+                return ResourceManager.GetString("TypeLicenseName", resourceCulture);
             }
         }
     }

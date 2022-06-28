@@ -64,14 +64,6 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>LangResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Assets\LangResources.ru-RU.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>LangResources.ru-RU.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Assets\LangResources.en-US.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>LangResources.en-US.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
     </ItemGroup>
     
     <ItemGroup>
@@ -79,16 +71,6 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LangResources.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Assets\LangResources.ru-RU.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>LangResources.ru-RU.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Assets\LangResources.en-US.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>LangResources.en-US.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

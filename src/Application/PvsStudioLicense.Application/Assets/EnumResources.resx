@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="Test1" xml:space="preserve">
+    <data name="Individual" xml:space="preserve">
+        <value />
+    </data>
+    <data name="OpenSource" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Student" xml:space="preserve">
         <value />
     </data>
 </root>
