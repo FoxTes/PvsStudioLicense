@@ -42,7 +42,7 @@ public class ProjectManager : IProjectManager, ITransientLifetime
         using var context = _contextFactory.CreateDbContext();
         return context.Products
             .AsNoTracking()
-            .FirstOrDefault(x => x.Path == path) ?? Result.Failure<Project>("Не удалось найти проект в базе данных.");
+            .FirstOrDefault(x => x.Path == path) ?? new Project();
     }
 
     /// <inheritdoc />

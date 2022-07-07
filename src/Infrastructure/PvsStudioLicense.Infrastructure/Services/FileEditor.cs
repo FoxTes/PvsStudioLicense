@@ -40,7 +40,7 @@ public class FileEditor : IFileEditor, ISingletonLifetime
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, "Не удается установить коментирий у файлов.");
+            _logger.Error(ex, "Не удается установить коментирий у файлов");
             return Result.Failure<int>("Не удается установить коментирий у файлов.");
         }
 
@@ -71,7 +71,7 @@ public class FileEditor : IFileEditor, ISingletonLifetime
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, "Не удается установить коментирий у файлов.");
+            _logger.Error(ex, "Не удается установить коментирий у файлов");
             return Result.Failure<int>("Не удается установить коментирий у файлов.");
         }
 
@@ -99,7 +99,7 @@ public class FileEditor : IFileEditor, ISingletonLifetime
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, "Не удается удалить коментирий у файлов.");
+            _logger.Error(ex, "Не удается удалить коментирий у файлов");
             return Result.Failure<int>("Не удается удалить коментирий у файлов.");
         }
 
@@ -130,7 +130,7 @@ public class FileEditor : IFileEditor, ISingletonLifetime
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, "Не удается удалить коментирий у файлов.");
+            _logger.Error(ex, "Не удается удалить коментирий у файлов");
             return Result.Failure<int>("Не удается удалить коментирий у файлов.");
         }
 
