@@ -6,7 +6,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSharpFunctionalExtensions" Version="2.29.2" />
+      <PackageReference Include="CSharpFunctionalExtensions" Version="2.31.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
       <PackageReference Include="Scrutor.AspNetCore" Version="3.3.0" />
       <PackageReference Include="System.IO.Abstractions" Version="17.1.1" />
