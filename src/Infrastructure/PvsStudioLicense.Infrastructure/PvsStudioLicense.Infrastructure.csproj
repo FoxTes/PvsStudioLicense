@@ -9,7 +9,7 @@
       <PackageReference Include="CSharpFunctionalExtensions" Version="2.33.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
       <PackageReference Include="Scrutor.AspNetCore" Version="3.3.0" />
-      <PackageReference Include="System.IO.Abstractions" Version="17.1.1" />
+      <PackageReference Include="System.IO.Abstractions" Version="17.2.1" />
     </ItemGroup>
 
 </Project>
