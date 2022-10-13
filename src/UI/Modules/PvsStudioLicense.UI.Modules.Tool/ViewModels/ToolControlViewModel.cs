@@ -47,7 +47,7 @@ public class ToolControlViewModel : NavigationViewModelBase
                 .TapIf(project => projectManager.Add(project).IsSuccess, project => Projects.Add(project))
                 .OnFailure(error =>
                 {
-                    if (error != Result.DefaultNoValueExceptionMessage)
+                    if (error != Result.Configuration.ErrorMessagesSeparator)
                         Growl.Error(error);
                 });
         });
@@ -111,7 +111,7 @@ public class ToolControlViewModel : NavigationViewModelBase
 
         var dialogResult = dialog.ShowDialog();
         return dialogResult != DialogResult.OK
-            ? Result.Failure<string>(Result.DefaultNoValueExceptionMessage)
+            ? Result.Failure<string>(Result.Configuration.ErrorMessagesSeparator)
             : Result.Success(dialog.SelectedPath);
     }
 }
