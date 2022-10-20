@@ -23,7 +23,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="58" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Border Grid.Column="0">
@@ -44,53 +43,56 @@
             </Grid>
         </Border>
 
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding ProjectViewModels}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="viewModels:ProjectViewModel">
-                    <Grid Margin="0,0,0,5" Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem
-                                    Command="{Binding Value.PinedProject, Source={StaticResource Proxy}}"
-                                    CommandParameter="{Binding}"
-                                    Header="Закрепить проект" />
-                                <MenuItem
-                                    Command="{Binding Value.RemoveProject, Source={StaticResource Proxy}}"
-                                    CommandParameter="{Binding}"
-                                    Header="Удалить проект" />
-                                <MenuItem
-                                    Command="{Binding Value.OpenStructure, Source={StaticResource Proxy}}"
-                                    CommandParameter="{Binding}"
-                                    Header="Структура проекта" />
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding ProjectViewModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="viewModels:ProjectViewModel">
+                        <Grid Margin="0,0,0,5" Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem
+                                        Command="{Binding Value.PinedProject, Source={StaticResource Proxy}}"
+                                        CommandParameter="{Binding}"
+                                        Header="Закрепить проект" />
+                                    <MenuItem
+                                        Command="{Binding Value.RemoveProject, Source={StaticResource Proxy}}"
+                                        CommandParameter="{Binding}"
+                                        Header="Удалить проект" />
+                                    <MenuItem
+                                        Command="{Binding Value.OpenStructure, Source={StaticResource Proxy}}"
+                                        CommandParameter="{Binding}"
+                                        Header="Структура проекта" />
 
-                            </ContextMenu>
-                        </Grid.ContextMenu>
-                        <TextBlock Text="{Binding Project.Path}" />
-                        <StackPanel
-                            Grid.Column="1"
-                            IsEnabled="{Binding Project.IsValid}"
-                            Orientation="Horizontal">
-                            <Button
-                                Command="{Binding DeleteComment}"
-                                CommandParameter="{Binding}"
-                                Content="Разкомент" />
-                            <Button
-                                Command="{Binding AddСomment}"
-                                CommandParameter="{Binding}"
-                                Content="Комент" />
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                            <TextBlock Text="{Binding Project.Path}" />
+                            <StackPanel
+                                Grid.Column="1"
+                                IsEnabled="{Binding Project.IsValid}"
+                                Orientation="Horizontal">
+                                <Button
+                                    Command="{Binding DeleteComment}"
+                                    CommandParameter="{Binding}"
+                                    Content="Разкомент" />
+                                <Button
+                                    Margin="0, 0, 8, 0"
+                                    Command="{Binding AddСomment}"
+                                    CommandParameter="{Binding}"
+                                    Content="Комент" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
 
         <Button
             Command="{Binding AddProject}"
             Content="Добавить проект"
-            Grid.Row="3" />
+            Grid.Row="2" />
     </Grid>
 </UserControl>
