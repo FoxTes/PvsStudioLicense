@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.36.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.0" />
   </ItemGroup>
 </Project>
